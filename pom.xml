@@ -39,14 +39,18 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+		<pluginManagement>
+		        <plugins>
+		            <plugin>
+		                <groupId>org.springframework.boot</groupId>
+		                <artifactId>spring-boot-maven-plugin</artifactId>
+		            </plugin>
+		        </plugins>
+		    </pluginManagement>
 			
 									<!-- Heroku Deployment Plugin-->
-
+									
+		<plugins>
 			<plugin>
 				<groupId>com.heroku.sdk</groupId>
 				<artifactId>heroku-maven-plugin</artifactId>
@@ -61,4 +65,8 @@
 		</plugins>
 	</build>
 
+	<packaging>pom</packaging>
+	<modules>
+		<module>project-b</module>
+	</modules>
 </project>

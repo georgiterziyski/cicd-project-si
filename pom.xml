@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<full-artifact-name>target/${project.artifactId}-${project.version}.jar</full-artifact-name>
 	</properties>
 
 	<dependencies>
@@ -42,6 +43,20 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+									<!-- Heroku Deployment Plugin-->
+
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.11</version>
+				<configuration>
+					<appName>spring-cicd-project-si</appName>
+					<processTypes>
+						<web>java $JAVA_OPTS -jar -Dserver.port=$PORT ${full-artifact-name}</web>
+					</processTypes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
